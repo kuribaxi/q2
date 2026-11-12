@@ -8,8 +8,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://cdn.jsdelivr.net/gh/kurdistan24/k24-fonts@main/K24KurdishRegular-Regular.ttf" rel="preload" as="font" type="font/ttf" crossorigin>
   <link href="https://cdn.jsdelivr.net/gh/kurdistan24/k24-fonts@main/K24KurdishBold-Bold.ttf" rel="preload" as="font" type="font/ttf" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Amiri+Quran&family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700&family=Inter:wght@400;600;700&family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Amiri+Quran&family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Lateef:wght@400;700&family=Reem+Kufi:wght@400;700&family=Katibeh&family=Markazi+Text:wght@400;700&family=Harmattan:wght@400;700&family=Vazirmatn:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;700&family=Inter:wght@400;600;700&family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Persiska typsnitt (rastikerdar) -->
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/samim-font@v4.0.5/dist/font-face.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/tanha-font@v0.10/dist/font-face.css" rel="stylesheet">
   <style>
     @font-face {
       font-family: 'K24 Kurdish';
@@ -35,6 +40,7 @@
       --font:'Times New Roman',Times,serif;
       --quran-font:'Amiri Quran','Scheherazade New','Amiri','Traditional Arabic','Noto Naskh Arabic',serif;
       --kurdish-font:'K24 Kurdish','Vazirmatn','Noto Naskh Arabic','Amiri','Tahoma',sans-serif;
+      --persian-font:'Vazirmatn','Samim','Shabnam','Noto Naskh Arabic','Amiri','Tahoma',sans-serif;
       --section-bg-1:#FBF8FF;
       --section-bg-2:#F3F0FB;
       --translation-bg:#E8F9F1;
@@ -53,6 +59,10 @@
       --page-bg-night:#1A1733;
       --aya-bg:#EFEAF9;
       --btn-bg: var(--surface2);
+      /* Toppbar / Bismillah */
+      --bismillah-color: var(--primary);
+      --topbar-text: var(--text);
+      --topbar-text2: var(--text2);
     }
     
     body.night {
@@ -119,25 +129,25 @@
       transition:opacity .3s, transform .3s;
     }
     .top-bar-side-left{display:flex;align-items:center;gap:6px;flex-wrap:wrap;flex:1;min-width:0}
-    .top-bar-weather{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:var(--text);cursor:pointer;padding:6px 10px;border-radius:14px;transition:all .2s;user-select:none}
+    .top-bar-weather{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:var(--topbar-text);cursor:pointer;padding:6px 10px;border-radius:14px;transition:all .2s;user-select:none}
     .top-bar-weather:hover{background:var(--primary-soft)}
     .top-bar-weather:active{transform:scale(.97)}
     .top-bar-weather .weather-icon-wrap{width:40px;height:40px;border-radius:12px;background:var(--amber-soft);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--amber);flex-shrink:0;transition:all .3s}
     .top-bar-weather .weather-info{display:flex;flex-direction:column;line-height:1.3}
-    .top-bar-weather .weather-temp{font-size:15px;font-weight:900;color:var(--text)}
-    .top-bar-weather .weather-desc{font-size:11px;font-weight:600;color:var(--text2)}
+    .top-bar-weather .weather-temp{font-size:15px;font-weight:900;color:var(--topbar-text)}
+    .top-bar-weather .weather-desc{font-size:11px;font-weight:600;color:var(--topbar-text2)}
 
-    .top-bar-azan{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:var(--text);cursor:pointer;padding:6px 10px;border-radius:14px;transition:all .2s;user-select:none}
+    .top-bar-azan{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:var(--topbar-text);cursor:pointer;padding:6px 10px;border-radius:14px;transition:all .2s;user-select:none}
     .top-bar-azan:hover{background:var(--primary-soft)}
     .top-bar-azan:active{transform:scale(.97)}
     .top-bar-azan .azan-icon-wrap{width:40px;height:40px;border-radius:12px;background:var(--emerald-soft);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--emerald);flex-shrink:0;transition:all .3s}
     .top-bar-azan .azan-info{display:flex;flex-direction:column;line-height:1.3}
-    .top-bar-azan .azan-next-time{font-size:15px;font-weight:900;color:var(--text)}
-    .top-bar-azan .azan-next-label{font-size:11px;font-weight:600;color:var(--text2)}
+    .top-bar-azan .azan-next-time{font-size:15px;font-weight:900;color:var(--topbar-text)}
+    .top-bar-azan .azan-next-label{font-size:11px;font-weight:600;color:var(--topbar-text2)}
 
     .top-bar-title{flex:1;text-align:center;min-width:0}
-    .top-bar-title .bismillah{font-family:var(--quran-font);font-size:24px;font-weight:700;color:var(--primary);line-height:1.4;text-shadow:0 1px 3px var(--primary-glow);letter-spacing:.01em}
-    body.night .top-bar-title .bismillah{color:#C9B8FF;text-shadow:0 1px 4px rgba(201,184,255,.3)}
+    .top-bar-title .bismillah{font-family:var(--quran-font);font-size:24px;font-weight:700;color:var(--bismillah-color);line-height:1.4;text-shadow:0 1px 3px var(--primary-glow);letter-spacing:.01em}
+    body.night .top-bar-title .bismillah{color:var(--bismillah-color);text-shadow:0 1px 4px rgba(201,184,255,.3)}
 
     .top-bar-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
     .top-bar-icons{display:flex;align-items:center;gap:6px}
@@ -151,14 +161,14 @@
     .bdg{position:absolute;top:-5px;right:-5px;min-width:20px;height:20px;border-radius:50%;background:var(--rose);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;border:2px solid var(--surface);padding:0 4px;box-shadow:0 2px 6px rgba(240,94,122,.4)}
     .bdg.h{display:none}
 
-    .top-bar-clock{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:900;color:var(--text);font-variant-numeric:tabular-nums;cursor:pointer;padding:6px 10px;border-radius:14px;transition:transform .25s ease,background .2s;user-select:none;flex-direction:column;align-items:flex-end;max-width:100%;overflow:visible;z-index:50;transform-origin:top right}
+    .top-bar-clock{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:900;color:var(--topbar-text);font-variant-numeric:tabular-nums;cursor:pointer;padding:6px 10px;border-radius:14px;transition:transform .25s ease,background .2s;user-select:none;flex-direction:column;align-items:flex-end;max-width:100%;overflow:visible;z-index:50;transform-origin:top right}
     .top-bar-clock:hover{background:var(--primary-soft);transform:scale(1.25);z-index:100}
     .top-bar-clock:active{transform:scale(.97)}
     .top-bar-clock .clock-main{display:flex;align-items:center;gap:8px}
     .top-bar-clock .clock-icon-wrap{width:40px;height:40px;border-radius:12px;background:var(--primary-soft);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--primary);flex-shrink:0}
-    .top-bar-clock .clock-time{letter-spacing:.02em;white-space:nowrap}
-    .top-bar-clock .clock-date{font-size:10px;font-weight:700;color:var(--text2);margin-top:2px;text-align:right;line-height:1.2;min-height:13px;transition:all .2s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
-    .top-bar-clock .clock-date .date-label{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--primary);margin-right:4px}
+    .top-bar-clock .clock-time{letter-spacing:.02em;white-space:nowrap;color:var(--topbar-text)}
+    .top-bar-clock .clock-date{font-size:10px;font-weight:700;color:var(--topbar-text2);margin-top:2px;text-align:right;line-height:1.2;min-height:13px;transition:all .2s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+    .top-bar-clock .clock-date .date-label{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--bismillah-color);margin-right:4px}
 
     @media (max-width: 768px) {
       .top-bar-right { flex-direction: column; align-items: stretch; gap: 10px; width: 100%; }
@@ -182,7 +192,8 @@
     .modal-card .modal-ref{font-size:14px;font-weight:800;color:var(--primary);margin-bottom:12px}
     .modal-card .modal-arabic{font-family:var(--quran-font);font-size:34px;line-height:2.4;direction:rtl;text-align:right;color:#fff;padding:20px;background:linear-gradient(135deg,var(--arabic-grad-1),var(--arabic-grad-2));border-radius:var(--rsm);box-shadow:0 8px 22px var(--arabic-glow);margin-bottom:16px;word-break:break-word;font-feature-settings:"liga" 1, "calt" 1;text-shadow:0 2px 4px rgba(0,0,0,.18)}
     .modal-card .modal-text{font-size:34px;color:var(--text);line-height:1.75;border-left:4px solid var(--emerald);background:var(--translation-bg);padding:14px 16px;border-radius:0 10px 10px 0;margin-bottom:20px}
-    .modal-card .modal-text.ku,.modal-card .modal-text.ku-KM,.modal-card .modal-text.fa{font-family:var(--kurdish-font);font-size:36px;line-height:1.9;direction:rtl;text-align:right}
+    .modal-card .modal-text.ku,.modal-card .modal-text.ku-KM{font-family:var(--kurdish-font);font-size:36px;line-height:1.9;direction:rtl;text-align:right}
+    .modal-card .modal-text.fa{font-family:var(--persian-font);font-size:36px;line-height:1.9;direction:rtl;text-align:right}
     .modal-card .modal-text.phonetic{font-family:'Times New Roman',Times,serif;font-style:italic;font-size:32px;line-height:1.8;direction:ltr;text-align:left}
     body.night .modal-card .modal-text{color:#D8F5E8}
     .modal-card .modal-close{width:100%;height:52px;border-radius:var(--rsm);border:none;background:var(--primary);color:#fff;font-family:var(--font);font-size:16px;font-weight:800;cursor:pointer;transition:all .2s}
@@ -416,7 +427,8 @@
     .daily-aya-arabic .tw-u{color:#7b2ea8}
     .daily-aya-arabic .tw-w{color:#00756a}
     .daily-aya-text{font-size:36px;line-height:1.8;border-top:1.5px solid rgba(255,255,255,.3);padding-top:16px;position:relative;z-index:1;font-style:italic;text-shadow:0 1px 2px rgba(0,0,0,.1);color:var(--text)}
-    .daily-aya-text.ku,.daily-aya-text.ku-KM,.daily-aya-text.fa{font-family:var(--kurdish-font);font-style:normal;font-size:38px;line-height:1.9}
+    .daily-aya-text.ku,.daily-aya-text.ku-KM{font-family:var(--kurdish-font);font-style:normal;font-size:38px;line-height:1.9}
+    .daily-aya-text.fa{font-family:var(--persian-font);font-style:normal;font-size:38px;line-height:1.9}
     .daily-aya-text.phonetic{font-family:'Times New Roman',Times,serif;font-style:italic;font-size:34px;line-height:1.75;direction:ltr;text-align:left;color:rgba(255,255,255,.97)}
     .daily-aya-loading{font-size:16px;opacity:.85;font-style:italic;padding:24px 0;text-align:center;color:var(--text)}
 
@@ -441,7 +453,8 @@
     .arabic{font-family:var(--quran-font);font-size:40px;line-height:2.5;direction:rtl;text-align:right;color:#fff;padding:20px 24px;background:linear-gradient(135deg,var(--arabic-grad-1),var(--arabic-grad-2));border-radius:var(--rsm);box-shadow:0 10px 28px var(--arabic-glow);word-break:break-word;position:relative;font-feature-settings:"liga" 1, "calt" 1;-webkit-font-smoothing:antialiased;text-shadow:0 2px 4px rgba(0,0,0,.18)}
     .arabic-small{font-size:34px;line-height:2.3;padding:18px 22px}
     .translation{font-size:34px;color:var(--text);padding:14px 20px;margin:12px 0 18px;border-left:4px solid var(--translation-border);background:var(--translation-bg);border-radius:0 12px 12px 0;min-height:26px;line-height:1.8;box-shadow:0 2px 8px rgba(34,192,138,.08)}
-    .translation.ku,.translation.ku-KM,.translation.fa{font-family:var(--kurdish-font);font-size:36px;line-height:1.9;direction:rtl;text-align:right}
+    .translation.ku,.translation.ku-KM{font-family:var(--kurdish-font);font-size:36px;line-height:1.9;direction:rtl;text-align:right}
+    .translation.fa{font-family:var(--persian-font);font-size:36px;line-height:1.9;direction:rtl;text-align:right}
     .translation.phonetic{font-family:'Times New Roman',Times,serif;font-style:italic;font-size:32px;line-height:1.8;direction:ltr;text-align:left;color:var(--text2)}
     body.night .translation{color:#D8F5E8;border-left-color:var(--emerald);box-shadow:0 2px 8px rgba(34,192,138,.18)}
     .divider{height:1px;background:var(--border);margin:22px 0;border:none}
@@ -466,14 +479,16 @@
     .fav-checkbox{width:20px;height:20px;accent-color:var(--primary);cursor:pointer;flex-shrink:0}
     .fav-arabic{font-family:var(--quran-font);font-size:26px;line-height:2.2;direction:rtl;text-align:right;color:var(--text);margin-bottom:10px;word-break:break-word;font-feature-settings:"liga" 1, "calt" 1}
     .fav-text{font-size:30px;color:var(--text);line-height:1.7;border-left:3px solid var(--emerald);background:var(--translation-bg);padding:10px 14px;border-radius:0 8px 8px 0}
-    .fav-text.ku,.fav-text.ku-KM,.fav-text.fa{font-family:var(--kurdish-font);font-size:32px;line-height:1.85;direction:rtl;text-align:right}
+    .fav-text.ku,.fav-text.ku-KM{font-family:var(--kurdish-font);font-size:32px;line-height:1.85;direction:rtl;text-align:right}
+    .fav-text.fa{font-family:var(--persian-font);font-size:32px;line-height:1.85;direction:rtl;text-align:right}
     .fav-text.phonetic{font-family:'Times New Roman',Times,serif;font-style:italic;font-size:30px;line-height:1.7;direction:ltr;text-align:left}
     .fav-verse-list{margin-top:8px;display:flex;flex-direction:column;gap:10px;max-height:400px;overflow-y:auto;padding-right:4px}
     .fav-verse-row{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:10px 12px}
     .fav-verse-num-badge{font-size:11px;font-weight:800;color:var(--primary);background:var(--primary-soft);display:inline-block;padding:2px 10px;border-radius:50px;margin-bottom:6px}
     .fav-verse-arabic{font-family:var(--quran-font);font-size:22px;line-height:2.1;direction:rtl;text-align:right;color:var(--text);margin-bottom:6px;word-break:break-word}
     .fav-verse-text{font-size:22px;color:var(--text);line-height:1.7;border-left:3px solid var(--emerald);background:var(--translation-bg);padding:8px 12px;border-radius:0 8px 8px 0}
-    .fav-verse-text.ku,.fav-verse-text.ku-KM,.fav-verse-text.fa{font-family:var(--kurdish-font);font-size:24px;line-height:1.85;direction:rtl;text-align:right}
+    .fav-verse-text.ku,.fav-verse-text.ku-KM{font-family:var(--kurdish-font);font-size:24px;line-height:1.85;direction:rtl;text-align:right}
+    .fav-verse-text.fa{font-family:var(--persian-font);font-size:24px;line-height:1.85;direction:rtl;text-align:right}
     .fav-verse-text.phonetic{font-family:'Times New Roman',Times,serif;font-style:italic;font-size:22px;line-height:1.7;direction:ltr;text-align:left}
     .fav-actions{display:flex;gap:8px;margin-top:12px;justify-content:flex-end;flex-wrap:wrap}
     .fav-actions button{width:40px;height:40px;border-radius:11px;border:none;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all .2s}
@@ -512,7 +527,8 @@
     .bottom-lang-inner button{flex:1 1 auto;min-width:60px;height:48px;border:none;border-radius:11px;background:transparent;font-family:var(--font);font-size:14px;font-weight:800;color:var(--text2);cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap}
     .bottom-lang-inner button.active{background:var(--primary);color:#fff;box-shadow:0 4px 14px var(--primary-glow)}
     .bottom-lang-inner button:not(.active):active{background:var(--primary-soft);color:var(--primary)}
-    .bottom-lang-inner button[data-lang="ku"],.bottom-lang-inner button[data-lang="ku-KM"],.bottom-lang-inner button[data-lang="fa"]{font-family:var(--kurdish-font);font-size:15px}
+    .bottom-lang-inner button[data-lang="ku"],.bottom-lang-inner button[data-lang="ku-KM"]{font-family:var(--kurdish-font);font-size:15px}
+    .bottom-lang-inner button[data-lang="fa"]{font-family:var(--persian-font);font-size:15px}
 
     .restore-chrome-btn{position:fixed;top:12px;right:12px;z-index:120;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--border);background:var(--surface);color:var(--primary);cursor:pointer;display:none;align-items:center;justify-content:center;font-size:16px;box-shadow:0 4px 14px var(--primary-glow);transition:all .2s}
     .restore-chrome-btn:active{transform:scale(.92)}
@@ -524,7 +540,8 @@
     #textModeOverlay .tm-ref{font-size:14px;font-weight:800;letter-spacing:.1em;opacity:.65;margin-bottom:20px;text-transform:uppercase;color:#fff}
     #textModeOverlay .tm-arabic{font-family:var(--quran-font);font-size:calc(54px * var(--tm-scale, 1));line-height:2.4;direction:rtl;color:#fff !important;max-width:1000px;margin:0 auto 24px;word-break:break-word;text-shadow:0 2px 8px rgba(0,0,0,.35);font-feature-settings:"liga" 1, "calt" 1}
     #textModeOverlay .tm-text{font-size:calc(34px * var(--tm-scale, 1));line-height:1.8;color:#fff !important;max-width:900px;margin:0 auto;font-style:italic;opacity:.96;text-shadow:0 1px 4px rgba(0,0,0,.3)}
-    #textModeOverlay .tm-text.ku,#textModeOverlay .tm-text.ku-KM,#textModeOverlay .tm-text.fa{font-family:var(--kurdish-font);font-style:normal;direction:rtl}
+    #textModeOverlay .tm-text.ku,#textModeOverlay .tm-text.ku-KM{font-family:var(--kurdish-font);font-style:normal;direction:rtl}
+    #textModeOverlay .tm-text.fa{font-family:var(--persian-font);font-style:normal;direction:rtl}
     #textModeOverlay .tm-text.phonetic{font-family:'Times New Roman',Times,serif;font-style:italic;direction:ltr}
     #textModeOverlay .tm-arabic .word-god{color:#e5484d !important;font-weight:700}
     /* Tazhib-paneldesign i helskärm — samma som vanlig vy (pergament + guld) */
@@ -737,6 +754,13 @@
     .pagebg-btn:hover{background:var(--primary-soft);color:var(--primary);border-color:var(--primary)}
     .pagebg-btn.reset{width:100%}
     .pagebg-btn.reset:hover{background:var(--rose-soft);color:var(--rose);border-color:var(--rose)}
+    .theme-preset-btn:hover{border-color:var(--primary)!important;background:var(--primary-soft)!important;transform:translateY(-2px);box-shadow:0 4px 12px var(--primary-glow)}
+    .theme-preset-btn:active{transform:scale(.97)}
+    .quran-font-btn{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:12px;border:1.5px solid var(--border);background:var(--surface2);cursor:pointer;transition:all .2s;text-align:right;width:100%}
+    .quran-font-btn:hover{border-color:var(--primary);background:var(--primary-soft)}
+    .quran-font-btn.active{border-color:var(--primary);background:var(--primary-soft);box-shadow:0 0 0 3px var(--primary-glow)}
+    .quran-font-btn .qf-name{font-size:13px;font-weight:800;color:var(--text)}
+    .quran-font-btn .qf-sample{font-size:20px;direction:rtl;color:var(--text);line-height:1.4}
   </style>
 </head>
 <body>
@@ -764,7 +788,11 @@
     <button onclick="changeTextModeSize(-0.1)" title="Minska textstorlek (−)"><i class="fas fa-minus"></i></button>
     <span class="tm-size-display" id="tmSizeDisplay">100%</span>
     <button onclick="changeTextModeSize(0.1)" title="Öka textstorlek (+)"><i class="fas fa-plus"></i></button>
-    <button onclick="resetTextModeSize()" title="Återställ"><i class="fas fa-rotate-left" style="font-size:12px"></i></button>
+    <button onclick="resetTextModeSize()" title="Återställ textstorlek"><i class="fas fa-rotate-left" style="font-size:12px"></i></button>
+    <button onclick="document.getElementById('tmColorInput').click()" title="Ändra bakgrundsfärg" style="position:relative;overflow:hidden">
+      <i class="fas fa-palette"></i>
+      <span id="tmBgSwatch" style="position:absolute;bottom:4px;right:4px;width:10px;height:10px;border-radius:50%;border:1.5px solid rgba(255,255,255,.7);background:#000;pointer-events:none"></span>
+    </button>
   </div>
   <div class="tm-ref" id="tmRef"></div>
   <div class="tm-arabic" id="tmArabic"></div>
@@ -1162,16 +1190,38 @@
 
 <!-- NY: FÄRGVÄLJAR-MODAL (För alla färger) -->
 <div class="modal-ov h" id="colorSettingsModal" onclick="if(event.target===this)closeColorModal()">
-  <div class="modal-card" style="max-width:480px">
+  <div class="modal-card" style="max-width:520px">
     <div class="fav-modal-header">
-      <div class="fav-modal-title"><i class="fas fa-palette" style="color:var(--primary)"></i><span>Färginställningar</span></div>
+      <div class="fav-modal-title"><i class="fas fa-palette" style="color:var(--primary)"></i><span>Tema &amp; Färger</span></div>
       <button class="fav-modal-icon-btn" onclick="closeColorModal()" title="Stäng"><i class="fas fa-times"></i></button>
     </div>
-    <div class="pagebg-note">Välj färg för hela sidan och alla knappar. I nattläge anpassas färgerna automatiskt för att behålla läsbarheten.</div>
-    
-    <!-- Helskärm -->
+    <div class="pagebg-note">Anpassa appens utseende. Färger sparas automatiskt. I nattläge justeras kontrasten automatiskt.</div>
+
+    <!-- Färdiga teman -->
+    <div style="margin-bottom:22px">
+      <label style="font-size:14px;font-weight:800;color:var(--text);display:block;margin-bottom:10px"><i class="fas fa-swatchbook" style="margin-right:6px;opacity:.7"></i>Färdiga teman</label>
+      <div class="theme-presets" id="themePresetsGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px"></div>
+    </div>
+
+    <hr style="border:none;border-top:1.5px solid var(--border);margin:18px 0">
+
+    <!-- Primär accent -->
     <div style="margin-bottom:20px">
-      <label style="font-size:14px;font-weight:800;color:var(--text);display:block;margin-bottom:8px">Helskärm (Bakgrund)</label>
+      <label style="font-size:14px;font-weight:800;color:var(--text);display:block;margin-bottom:8px">Accentfärg (knappar, länkar, markering)</label>
+      <div class="pagebg-row" style="gap:12px;align-items:center">
+        <label style="display:flex;align-items:center;gap:10px;cursor:pointer">
+          <input type="color" id="primaryColorInput" value="#6C47E8" oninput="setPrimaryColor(this.value)">
+          <span style="font-size:13px;font-weight:800;color:var(--text)">Välj färg</span>
+        </label>
+        <span class="pagebg-current" id="primaryColorCurrent">Lila (standard)</span>
+      </div>
+    </div>
+
+    <hr style="border:none;border-top:1.5px solid var(--border);margin:18px 0">
+    
+    <!-- Sidbakgrund -->
+    <div style="margin-bottom:20px">
+      <label style="font-size:14px;font-weight:800;color:var(--text);display:block;margin-bottom:8px">Sidbakgrund</label>
       <div class="pagebg-grid" id="pageBgGrid"></div>
       <div class="pagebg-row">
         <label style="display:flex;align-items:center;gap:10px;cursor:pointer">
@@ -1182,11 +1232,11 @@
       </div>
     </div>
 
-    <hr style="border:none;border-top:1.5px solid var(--border);margin:20px 0">
+    <hr style="border:none;border-top:1.5px solid var(--border);margin:18px 0">
 
     <!-- Knappar -->
     <div style="margin-bottom:20px">
-      <label style="font-size:14px;font-weight:800;color:var(--text);display:block;margin-bottom:8px">Knappar (Ikoner)</label>
+      <label style="font-size:14px;font-weight:800;color:var(--text);display:block;margin-bottom:8px">Knappar / ikoner</label>
       <div class="pagebg-grid" id="btnBgGrid"></div>
       <div class="pagebg-row">
         <label style="display:flex;align-items:center;gap:10px;cursor:pointer">
@@ -1195,6 +1245,69 @@
         </label>
         <span class="pagebg-current" id="btnBgCurrent">Standard</span>
       </div>
+    </div>
+
+    <hr style="border:none;border-top:1.5px solid var(--border);margin:18px 0">
+
+    <!-- Fullskärm (text-läge) -->
+    <div style="margin-bottom:20px">
+      <label style="font-size:14px;font-weight:800;color:var(--text);display:block;margin-bottom:8px">Fullskärm / Text-läge (bakgrund)</label>
+      <div class="pagebg-grid" id="tmBgGrid"></div>
+      <div class="pagebg-row">
+        <label style="display:flex;align-items:center;gap:10px;cursor:pointer">
+          <input type="color" id="tmBgInputModal" value="#000000" oninput="setTextModeBg(this.value)">
+          <span style="font-size:13px;font-weight:800;color:var(--text)">Egen färg</span>
+        </label>
+        <span class="pagebg-current" id="tmBgCurrent">Svart</span>
+      </div>
+    </div>
+
+    <hr style="border:none;border-top:1.5px solid var(--border);margin:18px 0">
+
+    <!-- Bismillah -->
+    <div style="margin-bottom:20px">
+      <label style="font-size:14px;font-weight:800;color:var(--text);display:block;margin-bottom:8px">بسم الله الرحمن الرحيم (Bismillah)</label>
+      <div class="pagebg-row" style="gap:12px;align-items:center">
+        <label style="display:flex;align-items:center;gap:10px;cursor:pointer">
+          <input type="color" id="bismillahColorInput" value="#6C47E8" oninput="setBismillahColor(this.value)">
+          <span style="font-size:13px;font-weight:800;color:var(--text)">Välj färg</span>
+        </label>
+        <span class="pagebg-current" id="bismillahColorCurrent">Accent (standard)</span>
+      </div>
+    </div>
+
+    <!-- Toppbar-text (väder, azan, klocka, datum) -->
+    <div style="margin-bottom:20px">
+      <label style="font-size:14px;font-weight:800;color:var(--text);display:block;margin-bottom:8px">Toppbar-text (väder, azan, klocka, datum)</label>
+      <div class="pagebg-row" style="gap:12px;align-items:center;flex-wrap:wrap">
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
+          <input type="color" id="topbarTextInput" value="#1E1535" oninput="setTopbarTextColor(this.value)">
+          <span style="font-size:13px;font-weight:800;color:var(--text)">Huvudtext</span>
+        </label>
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
+          <input type="color" id="topbarText2Input" value="#7168A0" oninput="setTopbarText2Color(this.value)">
+          <span style="font-size:13px;font-weight:800;color:var(--text)">Sekundär (beskrivning)</span>
+        </label>
+      </div>
+      <div style="font-size:12px;color:var(--text3);margin-top:6px">Påverkar temperatur, vädertext, bönetid, klocka och datum</div>
+    </div>
+
+    <hr style="border:none;border-top:1.5px solid var(--border);margin:18px 0">
+
+    <!-- Arabiska typsnitt -->
+    <div style="margin-bottom:20px">
+      <label style="font-size:14px;font-weight:800;color:var(--text);display:block;margin-bottom:10px"><i class="fas fa-font" style="margin-right:6px;opacity:.7"></i>Arabiskt typsnitt (Quran-text)</label>
+      <div id="quranFontGrid" style="display:grid;grid-template-columns:1fr;gap:8px"></div>
+      <div style="font-size:12px;color:var(--text3);margin-top:8px">Förhandsvisning: <span id="quranFontPreview" style="font-family:var(--quran-font);font-size:22px;direction:rtl;display:inline-block;margin-right:6px">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</span></div>
+    </div>
+
+    <hr style="border:none;border-top:1.5px solid var(--border);margin:18px 0">
+
+    <!-- Persiska typsnitt -->
+    <div style="margin-bottom:20px">
+      <label style="font-size:14px;font-weight:800;color:var(--text);display:block;margin-bottom:10px"><i class="fas fa-font" style="margin-right:6px;opacity:.7"></i>Persiskt typsnitt (فارسی)</label>
+      <div id="persianFontGrid" style="display:grid;grid-template-columns:1fr;gap:8px"></div>
+      <div style="font-size:12px;color:var(--text3);margin-top:8px">Förhandsvisning: <span id="persianFontPreview" style="font-family:var(--persian-font);font-size:22px;direction:rtl;display:inline-block;margin-right:6px">به نام خداوند بخشنده مهربان</span></div>
     </div>
 
     <button class="pagebg-btn reset" onclick="resetAllColors()"><i class="fas fa-rotate-left"></i> Återställ alla färger</button>
@@ -5003,11 +5116,14 @@ function applyTextModeBg(){
   if(ov) ov.style.background = textModeBg;
   const inp = document.getElementById('tmColorInput');
   if(inp && inp.value !== textModeBg) inp.value = textModeBg;
+  const swatch = document.getElementById('tmBgSwatch');
+  if(swatch) swatch.style.background = textModeBg;
 }
 function setTextModeBg(color){
   textModeBg = color;
   try{ localStorage.setItem('quranTextModeBg', color); }catch(e){}
   applyTextModeBg();
+  if(typeof applyTmBgModal === 'function') applyTmBgModal();
   toast('🎨 Bakgrundsfärg sparad');
 }
 
@@ -5108,7 +5224,7 @@ function toggleTextMode(){
 }
 
 /* ============================================================
-   SIDANS BAKGRUNDSFÄRG OCH KNAPPFÄRG
+   TEMA & FÄRGINSTÄLLNINGAR
    ============================================================ */
 const PAGE_BG_PRESETS = [
   {c:'#EFEAF9', n:'Lila (standard)'},
@@ -5130,13 +5246,66 @@ const BTN_BG_PRESETS = [
   {c:'#EEF1F5', n:'Ljusgrå'},
   {c:'#373072', n:'Mörk (natt)'}
 ];
+const TM_BG_PRESETS = [
+  {c:'#000000', n:'Svart'},
+  {c:'#0B1C2D', n:'Midnatt'},
+  {c:'#1A1733', n:'Mörklila'},
+  {c:'#0F2A22', n:'Mörkgrön'},
+  {c:'#1E3A5F', n:'Djupblå'},
+  {c:'#4AA8E0', n:'Himmel'},
+  {c:'#2C2761', n:'Indigo'},
+  {c:'#3D1826', n:'Vinröd'}
+];
+const THEME_PRESETS = [
+  { id:'lila',    n:'Lila',     primary:'#6C47E8', page:'#EFEAF9', btn:'#F7F5FC', tm:'#000000' },
+  { id:'emerald', n:'Smaragd',  primary:'#0D9488', page:'#E8F6EE', btn:'#DCFDF2', tm:'#0F2A22' },
+  { id:'ocean',   n:'Ocean',    primary:'#2563EB', page:'#E6F0FB', btn:'#DBEAFE', tm:'#1E3A5F' },
+  { id:'sunset',  n:'Solnedgång', primary:'#E11D48', page:'#FDE8E8', btn:'#FDEDF0', tm:'#3D1826' },
+  { id:'sand',    n:'Sand',     primary:'#B45309', page:'#FDF8EF', btn:'#FEF3C7', tm:'#1C1408' },
+  { id:'slate',   n:'Skiffer',  primary:'#475569', page:'#EEF1F5', btn:'#E2E8F0', tm:'#0F172A' }
+];
 
 let pageBg = null;
 let btnBg = null;
+let primaryColor = null;
+let bismillahColor = null;
+let topbarTextColor = null;
+let topbarText2Color = null;
+let quranFontId = null;
+let persianFontId = null;
 try{ 
   pageBg = localStorage.getItem('quranPageBg') || null; 
   btnBg = localStorage.getItem('quranBtnBg') || null;
+  primaryColor = localStorage.getItem('quranPrimaryColor') || null;
+  bismillahColor = localStorage.getItem('quranBismillahColor') || null;
+  topbarTextColor = localStorage.getItem('quranTopbarText') || null;
+  topbarText2Color = localStorage.getItem('quranTopbarText2') || null;
+  quranFontId = localStorage.getItem('quranArabicFont') || null;
+  persianFontId = localStorage.getItem('quranPersianFont') || null;
 }catch(e){}
+
+const QURAN_FONTS = [
+  { id: 'amiri-quran', name: 'Amiri Quran', stack: "'Amiri Quran','Scheherazade New','Amiri','Noto Naskh Arabic',serif", sample: 'بِسْمِ ٱللَّهِ' },
+  { id: 'scheherazade', name: 'Scheherazade New', stack: "'Scheherazade New','Amiri Quran','Amiri','Noto Naskh Arabic',serif", sample: 'بِسْمِ ٱللَّهِ' },
+  { id: 'amiri', name: 'Amiri', stack: "'Amiri','Amiri Quran','Scheherazade New','Noto Naskh Arabic',serif", sample: 'بِسْمِ ٱللَّهِ' },
+  { id: 'noto-naskh', name: 'Noto Naskh Arabic', stack: "'Noto Naskh Arabic','Amiri','Scheherazade New',serif", sample: 'بِسْمِ ٱللَّهِ' },
+  { id: 'lateef', name: 'Lateef', stack: "'Lateef','Amiri','Noto Naskh Arabic',serif", sample: 'بِسْمِ ٱللَّهِ' },
+  { id: 'harmattan', name: 'Harmattan', stack: "'Harmattan','Noto Naskh Arabic','Amiri',serif", sample: 'بِسْمِ ٱللَّهِ' },
+  { id: 'markazi', name: 'Markazi Text', stack: "'Markazi Text','Amiri','Noto Naskh Arabic',serif", sample: 'بِسْمِ ٱللَّهِ' },
+  { id: 'reem-kufi', name: 'Reem Kufi', stack: "'Reem Kufi','Noto Naskh Arabic','Amiri',sans-serif", sample: 'بِسْمِ ٱللَّهِ' },
+  { id: 'katibeh', name: 'Katibeh', stack: "'Katibeh','Amiri','Noto Naskh Arabic',serif", sample: 'بِسْمِ ٱللَّهِ' }
+];
+
+const PERSIAN_FONTS = [
+  { id: 'vazirmatn', name: 'Vazirmatn', stack: "'Vazirmatn','Samim','Shabnam','Noto Naskh Arabic',sans-serif", sample: 'به نام خدا' },
+  { id: 'samim', name: 'Samim', stack: "'Samim','Vazirmatn','Shabnam','Noto Naskh Arabic',sans-serif", sample: 'به نام خدا' },
+  { id: 'shabnam', name: 'Shabnam', stack: "'Shabnam','Vazirmatn','Samim','Noto Naskh Arabic',sans-serif", sample: 'به نام خدا' },
+  { id: 'sahel', name: 'Sahel', stack: "'Sahel','Vazirmatn','Noto Naskh Arabic',sans-serif", sample: 'به نام خدا' },
+  { id: 'tanha', name: 'Tanha', stack: "'Tanha','Vazirmatn','Noto Naskh Arabic',sans-serif", sample: 'به نام خدا' },
+  { id: 'noto-naskh-fa', name: 'Noto Naskh Arabic', stack: "'Noto Naskh Arabic','Vazirmatn','Amiri',serif", sample: 'به نام خدا' },
+  { id: 'amiri-fa', name: 'Amiri', stack: "'Amiri','Noto Naskh Arabic','Vazirmatn',serif", sample: 'به نام خدا' },
+  { id: 'markazi-fa', name: 'Markazi Text', stack: "'Markazi Text','Vazirmatn','Noto Naskh Arabic',serif", sample: 'به نام خدا' }
+];
 
 function pageBgHexToRgb(hex){
   let h = String(hex || '').replace('#','').trim();
@@ -5177,6 +5346,12 @@ function pageBgNightVariant(hex){
   return pageBgHslToHex(h, Math.min(s, 0.45), 0.13);
 }
 
+function hexToSoft(hex, alpha){
+  const rgb = pageBgHexToRgb(hex);
+  if(!rgb) return 'rgba(108,71,232,0.12)';
+  return 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + (alpha == null ? 0.14 : alpha) + ')';
+}
+
 function buildPageBgGrid(){
   const grid = document.getElementById('pageBgGrid');
   if(!grid) return;
@@ -5192,6 +5367,54 @@ function buildBtnBgGrid(){
     '<button type="button" class="pagebg-swatch" data-color="' + p.c + '" title="' + p.n +
     '" style="background:' + p.c + '" onclick="setBtnBg(\'' + p.c + '\')"></button>'
   ).join('');
+}
+function buildTmBgGrid(){
+  const grid = document.getElementById('tmBgGrid');
+  if(!grid) return;
+  grid.innerHTML = TM_BG_PRESETS.map(p =>
+    '<button type="button" class="pagebg-swatch" data-color="' + p.c + '" title="' + p.n +
+    '" style="background:' + p.c + '" onclick="setTextModeBg(\'' + p.c + '\')"></button>'
+  ).join('');
+}
+function buildThemePresetsGrid(){
+  const grid = document.getElementById('themePresetsGrid');
+  if(!grid) return;
+  grid.innerHTML = THEME_PRESETS.map(t =>
+    '<button type="button" class="theme-preset-btn" data-id="' + t.id + '" onclick="applyThemePreset(\'' + t.id + '\')" ' +
+    'style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 8px;border-radius:14px;border:1.5px solid var(--border);background:var(--surface2);cursor:pointer;transition:all .2s">' +
+    '<span style="display:flex;gap:3px">' +
+      '<span style="width:14px;height:14px;border-radius:50%;background:' + t.primary + '"></span>' +
+      '<span style="width:14px;height:14px;border-radius:50%;background:' + t.page + ';border:1px solid #ccc"></span>' +
+      '<span style="width:14px;height:14px;border-radius:50%;background:' + t.tm + '"></span>' +
+    '</span>' +
+    '<span style="font-size:12px;font-weight:800;color:var(--text)">' + t.n + '</span>' +
+    '</button>'
+  ).join('');
+}
+
+function applyPrimaryColor(){
+  const root = document.documentElement;
+  const valid = pageBgHexToRgb(primaryColor) ? primaryColor : null;
+  if(valid){
+    root.style.setProperty('--primary', valid);
+    root.style.setProperty('--primary-soft', hexToSoft(valid, 0.14));
+    root.style.setProperty('--primary-glow', hexToSoft(valid, 0.22));
+    root.style.setProperty('--shadow', '0 4px 24px ' + hexToSoft(valid, 0.12));
+    root.style.setProperty('--shadow-sm', '0 2px 10px ' + hexToSoft(valid, 0.08));
+  } else {
+    root.style.removeProperty('--primary');
+    root.style.removeProperty('--primary-soft');
+    root.style.removeProperty('--primary-glow');
+    root.style.removeProperty('--shadow');
+    root.style.removeProperty('--shadow-sm');
+  }
+  const inp = document.getElementById('primaryColorInput');
+  if(inp) inp.value = valid || '#6C47E8';
+  const lbl = document.getElementById('primaryColorCurrent');
+  if(lbl){
+    const known = { '#6c47e8':'Lila (standard)', '#0d9488':'Smaragd', '#2563eb':'Ocean', '#e11d48':'Solnedgång', '#b45309':'Sand', '#475569':'Skiffer' };
+    lbl.textContent = known[(valid||'').toLowerCase()] || (valid ? valid.toUpperCase() : 'Lila (standard)');
+  }
 }
 
 function applyPageBg(){
@@ -5240,6 +5463,31 @@ function applyBtnBg(){
   });
 }
 
+function applyTmBgModal(){
+  const valid = pageBgHexToRgb(textModeBg) ? textModeBg : '#000000';
+  const inp = document.getElementById('tmBgInputModal');
+  if(inp) inp.value = valid;
+  const lbl = document.getElementById('tmBgCurrent');
+  if(lbl){
+    const preset = TM_BG_PRESETS.find(p => p.c.toLowerCase() === valid.toLowerCase());
+    lbl.textContent = preset ? preset.n : valid.toUpperCase();
+  }
+  document.querySelectorAll('#tmBgGrid .pagebg-swatch').forEach(sw => {
+    sw.classList.toggle('active', sw.dataset.color.toLowerCase() === valid.toLowerCase());
+  });
+}
+
+function setPrimaryColor(color){
+  let c = String(color || '').trim();
+  if(c && c[0] !== '#') c = '#' + c;
+  primaryColor = pageBgHexToRgb(c) ? c : null;
+  try{
+    if(primaryColor) localStorage.setItem('quranPrimaryColor', primaryColor);
+    else localStorage.removeItem('quranPrimaryColor');
+  }catch(e){}
+  applyPrimaryColor();
+  toast('🎨 Accentfärg uppdaterad');
+}
 function setPageBg(color){
   let c = String(color || '').trim();
   if(c && c[0] !== '#') c = '#' + c;
@@ -5260,16 +5508,169 @@ function setBtnBg(color){
   }catch(e){}
   applyBtnBg();
 }
+function applyBismillahColor(){
+  const root = document.documentElement;
+  const valid = pageBgHexToRgb(bismillahColor) ? bismillahColor : null;
+  if(valid){
+    root.style.setProperty('--bismillah-color', valid);
+  } else {
+    root.style.removeProperty('--bismillah-color');
+  }
+  const inp = document.getElementById('bismillahColorInput');
+  if(inp) inp.value = valid || (primaryColor || '#6C47E8');
+  const lbl = document.getElementById('bismillahColorCurrent');
+  if(lbl) lbl.textContent = valid ? valid.toUpperCase() : 'Accent (standard)';
+}
+function applyTopbarTextColors(){
+  const root = document.documentElement;
+  const t1 = pageBgHexToRgb(topbarTextColor) ? topbarTextColor : null;
+  const t2 = pageBgHexToRgb(topbarText2Color) ? topbarText2Color : null;
+  if(t1) root.style.setProperty('--topbar-text', t1);
+  else root.style.removeProperty('--topbar-text');
+  if(t2) root.style.setProperty('--topbar-text2', t2);
+  else root.style.removeProperty('--topbar-text2');
+  const inp1 = document.getElementById('topbarTextInput');
+  if(inp1) inp1.value = t1 || '#1E1535';
+  const inp2 = document.getElementById('topbarText2Input');
+  if(inp2) inp2.value = t2 || '#7168A0';
+}
+function setBismillahColor(color){
+  let c = String(color || '').trim();
+  if(c && c[0] !== '#') c = '#' + c;
+  bismillahColor = pageBgHexToRgb(c) ? c : null;
+  try{
+    if(bismillahColor) localStorage.setItem('quranBismillahColor', bismillahColor);
+    else localStorage.removeItem('quranBismillahColor');
+  }catch(e){}
+  applyBismillahColor();
+  toast('🎨 Bismillah-färg uppdaterad');
+}
+function setTopbarTextColor(color){
+  let c = String(color || '').trim();
+  if(c && c[0] !== '#') c = '#' + c;
+  topbarTextColor = pageBgHexToRgb(c) ? c : null;
+  try{
+    if(topbarTextColor) localStorage.setItem('quranTopbarText', topbarTextColor);
+    else localStorage.removeItem('quranTopbarText');
+  }catch(e){}
+  applyTopbarTextColors();
+  toast('🎨 Toppbar-text uppdaterad');
+}
+function setTopbarText2Color(color){
+  let c = String(color || '').trim();
+  if(c && c[0] !== '#') c = '#' + c;
+  topbarText2Color = pageBgHexToRgb(c) ? c : null;
+  try{
+    if(topbarText2Color) localStorage.setItem('quranTopbarText2', topbarText2Color);
+    else localStorage.removeItem('quranTopbarText2');
+  }catch(e){}
+  applyTopbarTextColors();
+  toast('🎨 Sekundär toppbar-text uppdaterad');
+}
+
+function buildQuranFontGrid(){
+  const grid = document.getElementById('quranFontGrid');
+  if(!grid) return;
+  const activeId = quranFontId || 'amiri-quran';
+  grid.innerHTML = QURAN_FONTS.map(f =>
+    '<button type="button" class="quran-font-btn' + (f.id === activeId ? ' active' : '') + '" data-id="' + f.id + '" onclick="setQuranFont(\'' + f.id + '\')">' +
+      '<span class="qf-name">' + f.name + '</span>' +
+      '<span class="qf-sample" style="font-family:' + f.stack + '">' + f.sample + '</span>' +
+    '</button>'
+  ).join('');
+}
+function applyQuranFont(){
+  const root = document.documentElement;
+  const f = QURAN_FONTS.find(x => x.id === quranFontId) || QURAN_FONTS[0];
+  root.style.setProperty('--quran-font', f.stack);
+  const preview = document.getElementById('quranFontPreview');
+  if(preview) preview.style.fontFamily = f.stack;
+  document.querySelectorAll('#quranFontGrid .quran-font-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.id === f.id);
+  });
+}
+function setQuranFont(id){
+  const f = QURAN_FONTS.find(x => x.id === id);
+  if(!f) return;
+  quranFontId = id;
+  try{ localStorage.setItem('quranArabicFont', id); }catch(e){}
+  applyQuranFont();
+  toast('🔤 Arabiskt typsnitt: ' + f.name);
+}
+
+function buildPersianFontGrid(){
+  const grid = document.getElementById('persianFontGrid');
+  if(!grid) return;
+  const activeId = persianFontId || 'vazirmatn';
+  grid.innerHTML = PERSIAN_FONTS.map(f =>
+    '<button type="button" class="quran-font-btn' + (f.id === activeId ? ' active' : '') + '" data-id="' + f.id + '" onclick="setPersianFont(\'' + f.id + '\')">' +
+      '<span class="qf-name">' + f.name + '</span>' +
+      '<span class="qf-sample" style="font-family:' + f.stack + '">' + f.sample + '</span>' +
+    '</button>'
+  ).join('');
+}
+function applyPersianFont(){
+  const root = document.documentElement;
+  const f = PERSIAN_FONTS.find(x => x.id === persianFontId) || PERSIAN_FONTS[0];
+  root.style.setProperty('--persian-font', f.stack);
+  const preview = document.getElementById('persianFontPreview');
+  if(preview) preview.style.fontFamily = f.stack;
+  document.querySelectorAll('#persianFontGrid .quran-font-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.id === f.id);
+  });
+}
+function setPersianFont(id){
+  const f = PERSIAN_FONTS.find(x => x.id === id);
+  if(!f) return;
+  persianFontId = id;
+  try{ localStorage.setItem('quranPersianFont', id); }catch(e){}
+  applyPersianFont();
+  toast('🔤 Persiskt typsnitt: ' + f.name);
+}
+
+function applyThemePreset(id){
+  const t = THEME_PRESETS.find(x => x.id === id);
+  if(!t) return;
+  setPrimaryColor(t.primary);
+  setPageBg(t.page);
+  setBtnBg(t.btn);
+  setTextModeBg(t.tm);
+  setBismillahColor(t.primary);
+  toast('✨ Tema: ' + t.n);
+}
 function resetAllColors(){
+  setPrimaryColor(null);
   setPageBg(null);
   setBtnBg(null);
-  if (typeof toast === 'function') toast('↩️ Alla färger återställda');
+  setTextModeBg('#000000');
+  setBismillahColor(null);
+  setTopbarTextColor(null);
+  setTopbarText2Color(null);
+  quranFontId = null;
+  persianFontId = null;
+  try{
+    localStorage.removeItem('quranArabicFont');
+    localStorage.removeItem('quranPersianFont');
+  }catch(e){}
+  applyQuranFont();
+  applyPersianFont();
+  if (typeof toast === 'function') toast('↩️ Alla färger & typsnitt återställda');
 }
 function openColorModal(){
+  buildThemePresetsGrid();
   buildPageBgGrid();
   buildBtnBgGrid();
+  buildTmBgGrid();
+  buildQuranFontGrid();
+  buildPersianFontGrid();
+  applyPrimaryColor();
   applyPageBg();
   applyBtnBg();
+  applyTmBgModal();
+  applyBismillahColor();
+  applyTopbarTextColors();
+  applyQuranFont();
+  applyPersianFont();
   const m = document.getElementById('colorSettingsModal');
   if(m) m.classList.remove('h');
 }
@@ -5308,8 +5709,13 @@ function toast(msg){
 applyNight();
 buildPageBgGrid();
 buildBtnBgGrid();
+applyPrimaryColor();
 applyPageBg();
 applyBtnBg();
+applyBismillahColor();
+applyTopbarTextColors();
+applyQuranFont();
+applyPersianFont();
 applySectionsVisibility();
 applyChromeVisibility();
 applyTranslationsVisibility();
