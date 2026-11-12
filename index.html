@@ -409,7 +409,8 @@
     .sync-offset-btn:hover{background:rgba(255,255,255,.32)}
     .sync-offset-btn:active{transform:scale(.9)}
     #textModeOverlay .sync-offset-btn{width:44px;height:44px;font-size:17px}
-    .daily-aya-arabic .aw{transition:background .22s,box-shadow .22s;border-radius:9px;padding:0 5px;margin:0 -1px}
+    .daily-aya-arabic .aw{transition:background .22s,box-shadow .22s;border-radius:9px;padding:0 5px;margin:0 -1px;display:inline}
+    .daily-aya-arabic span[class^="tw-"]{display:inline}
     .daily-aya-arabic .aw.aw-active{background:rgba(255,255,255,.30);box-shadow:0 0 16px rgba(255,255,255,.28)}
     .daily-aya-arabic.tj .aw.aw-active{background:rgba(201,165,74,.30);box-shadow:0 0 12px rgba(180,140,50,.45)}
     #textModeOverlay .tm-arabic .aw{transition:background .22s,box-shadow .22s;border-radius:10px;padding:0 7px;margin:0 -1px}
@@ -426,6 +427,7 @@
     .daily-aya-arabic .tw-g,.daily-aya-arabic .tw-f,.daily-aya-arabic .tw-a,.daily-aya-arabic .tw-i{color:#128a4c}
     .daily-aya-arabic .tw-u{color:#7b2ea8}
     .daily-aya-arabic .tw-w{color:#00756a}
+    .daily-aya-arabic .tw-d{color:#c62828} /* ikhfa / related */
     .daily-aya-text{font-size:36px;line-height:1.8;border-top:1.5px solid rgba(255,255,255,.3);padding-top:16px;position:relative;z-index:1;font-style:italic;text-shadow:0 1px 2px rgba(0,0,0,.1);color:var(--text)}
     .daily-aya-text.ku,.daily-aya-text.ku-KM{font-family:var(--kurdish-font);font-style:normal;font-size:38px;line-height:1.9}
     .daily-aya-text.fa{font-family:var(--persian-font);font-style:normal;font-size:38px;line-height:1.9}
@@ -555,6 +557,7 @@
     #textModeOverlay .tm-arabic.tj .tw-g,#textModeOverlay .tm-arabic.tj .tw-f,#textModeOverlay .tm-arabic.tj .tw-a,#textModeOverlay .tm-arabic.tj .tw-i{color:#128a4c !important}
     #textModeOverlay .tm-arabic.tj .tw-u{color:#7b2ea8 !important}
     #textModeOverlay .tm-arabic.tj .tw-w{color:#00756a !important}
+    #textModeOverlay .tm-arabic.tj .tw-d{color:#c62828 !important}
     #textModeOverlay .tm-arabic.tj .word-god{color:#e5484d !important;font-weight:700}
     #textModeOverlay .tm-arabic.tj .aw.aw-active{background:rgba(201,165,74,.32);box-shadow:0 0 14px rgba(180,140,50,.5);text-shadow:none}
     #textModeOverlay .tm-arabic.tj::before,#textModeOverlay .tm-arabic.tj::after{content:'';position:absolute;width:66px;height:66px;pointer-events:none;opacity:.95;background-repeat:no-repeat;background-size:contain;z-index:2}
@@ -563,7 +566,15 @@
     #textModeOverlay .tm-close{position:fixed;top:14px;right:14px;z-index:9991;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);background:rgba(255,255,255,.12);color:#fff;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:all .2s}
     #textModeOverlay .tm-close:hover{background:rgba(255,255,255,.28)}
     #textModeOverlay .tm-close:active{transform:scale(.92)}
-    #tmColorInput{position:fixed;left:-100px;top:-100px;width:0;height:0;opacity:0;pointer-events:none}
+    #tmColorInput{
+      position:fixed; bottom:max(70px, env(safe-area-inset-bottom)); left:50%;
+      transform:translateX(-50%); z-index:10000;
+      width:48px; height:48px; padding:0; border:none; border-radius:50%;
+      opacity:0; pointer-events:none; /* activated programmatically */
+    }
+    #tmColorInput.tm-color-active{
+      opacity:1; pointer-events:auto;
+    }
     /* FIX: mobilanpassat verktygsfält i text-läge — radbryter istället för att hamna utanför skärmen */
     #textModeOverlay .tm-size-bar{position:fixed;bottom:max(16px, env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:9992;display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:50px;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.3);backdrop-filter:blur(8px);flex-wrap:wrap;justify-content:center;max-width:calc(100vw - 20px);box-sizing:border-box;transition:opacity .45s ease, transform .45s ease}
     #textModeOverlay .tm-size-bar.tm-idle{opacity:0;pointer-events:none;transform:translateX(-50%) translateY(14px)}
@@ -789,7 +800,7 @@
     <span class="tm-size-display" id="tmSizeDisplay">100%</span>
     <button onclick="changeTextModeSize(0.1)" title="Öka textstorlek (+)"><i class="fas fa-plus"></i></button>
     <button onclick="resetTextModeSize()" title="Återställ textstorlek"><i class="fas fa-rotate-left" style="font-size:12px"></i></button>
-    <button onclick="document.getElementById('tmColorInput').click()" title="Ändra bakgrundsfärg" style="position:relative;overflow:hidden">
+    <button type="button" id="tmColorBtn" onclick="openTextModeColorPicker(event)" title="Ändra bakgrundsfärg" style="position:relative;overflow:hidden">
       <i class="fas fa-palette"></i>
       <span id="tmBgSwatch" style="position:absolute;bottom:4px;right:4px;width:10px;height:10px;border-radius:50%;border:1.5px solid rgba(255,255,255,.7);background:#000;pointer-events:none"></span>
     </button>
@@ -2651,25 +2662,33 @@ const AR_JOIN_CHAR = /[\u0622-\u064A\u066E-\u06D3]/;
 const AR_NONJOIN_FWD = '\u0622\u0623\u0625\u0626\u0627\u0621\u062F\u0630\u0631\u0632\u0648\u0624\u0629\u0649\u06CC\u0671\u0672\u0673\u0675\u0676\u0677';
 function fixArabicJoinBoundaries(html){
   if(!html) return html;
-  const MARKS = '[\u064B-\u065F\u0670\u06D6-\u06ED]*';
-  /* gräns FÖRE ett span: föregående bokstav (med diakritika) sammanfogar framåt */
+  const ZWJ = '\u200D';
+  const MARKS = '[\u064B-\u065F\u0670\u06D6-\u06ED\u0640]*';
+  /* 1) ZWJ inuti varje färgspan så bokstäver behåller sammanfogningsform över span-gränser */
+  html = html.replace(/<span(\s+class="tw-[^"]*"[^>]*)>([^<]*)<\/span>/g, (m, attrs, txt) => {
+    if(!txt) return m;
+    return '<span' + attrs + '>' + ZWJ + txt + ZWJ + '</span>';
+  });
+  /* 2) gräns FÖRE ett span */
   const reBefore = new RegExp('([\\u0622-\\u064A\\u066E-\\u06D3]' + MARKS + ')(<span [^>]*>)', 'g');
   html = html.replace(reBefore, (m, run, tag) => {
     const ch = run[0];
-    return (AR_JOIN_CHAR.test(ch) && !AR_NONJOIN_FWD.includes(ch)) ? run + '\u200D' + tag : m;
+    return (AR_JOIN_CHAR.test(ch) && !AR_NONJOIN_FWD.includes(ch)) ? run + ZWJ + tag : m;
   });
-  /* gräns EFTER ett span: sista bokstaven i spant (med diakritika) sammanfogar framåt + nästa bokstav är arabisk */
+  /* 3) gräns EFTER ett span */
   const reAfter = new RegExp('([\\u0622-\\u064A\\u066E-\\u06D3]' + MARKS + ')(<\\/span>)([\\u0622-\\u064A\\u066E-\\u06D3])', 'g');
   html = html.replace(reAfter, (m, run, tag, nxt) => {
     const ch = run[0];
-    return (AR_JOIN_CHAR.test(ch) && !AR_NONJOIN_FWD.includes(ch)) ? run + tag + '\u200D' + nxt : m;
+    return (AR_JOIN_CHAR.test(ch) && !AR_NONJOIN_FWD.includes(ch)) ? run + tag + ZWJ + nxt : m;
   });
   return html;
 }
 function parseTajweedHtml(markup){
   if(!markup) return '';
+  /* Tajweed-API: [rule[text]] eller [rule:id[text]] */
   const html = escapeHtml(markup)
-    .replace(/\[([a-z]+)(?::\d+)?\[([^\]]*)\]/g, (m, rule, txt) => '<span class="tw-' + rule + '">' + txt + '</span>');
+    .replace(/\[([a-z]+)(?::\d+)?\[([^\]]*)\]/g, (m, rule, txt) =>
+      '<span class="tw-' + rule + '">' + txt + '</span>');
   return fixArabicJoinBoundaries(html);
 }
 function tajweedSync(surah, ayah){
@@ -5125,6 +5144,32 @@ function setTextModeBg(color){
   applyTextModeBg();
   if(typeof applyTmBgModal === 'function') applyTmBgModal();
   toast('🎨 Bakgrundsfärg sparad');
+}
+function openTextModeColorPicker(ev){
+  if(ev){ ev.preventDefault(); ev.stopPropagation(); }
+  const inp = document.getElementById('tmColorInput');
+  if(!inp) return;
+  try{ inp.value = textModeBg || '#000000'; }catch(e){}
+  /* Visa tillfälligt så mobila webbläsare tillåter color-picker */
+  inp.classList.add('tm-color-active');
+  inp.style.pointerEvents = 'auto';
+  const cleanup = () => {
+    inp.classList.remove('tm-color-active');
+    inp.style.pointerEvents = 'none';
+    inp.removeEventListener('change', onChange);
+    inp.removeEventListener('blur', cleanup);
+  };
+  const onChange = () => {
+    if(inp.value) setTextModeBg(inp.value);
+    cleanup();
+  };
+  inp.addEventListener('change', onChange);
+  inp.addEventListener('blur', cleanup);
+  /* Direkt klick i samma user-gesture */
+  setTimeout(() => {
+    try{ inp.click(); }catch(e){}
+    try{ inp.showPicker && inp.showPicker(); }catch(e){}
+  }, 10);
 }
 
 function updateTextModeContent(){
