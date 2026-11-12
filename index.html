@@ -409,8 +409,8 @@
     .sync-offset-btn:hover{background:rgba(255,255,255,.32)}
     .sync-offset-btn:active{transform:scale(.9)}
     #textModeOverlay .sync-offset-btn{width:44px;height:44px;font-size:17px}
-    .daily-aya-arabic .aw{transition:background .22s,box-shadow .22s;border-radius:6px;padding:0 2px;margin:0;display:inline}
-    .daily-aya-arabic span[class^="tw-"]{display:inline !important; letter-spacing:normal; word-spacing:normal}
+    .daily-aya-arabic .aw{transition:background .22s,box-shadow .22s;border-radius:9px;padding:0 5px;margin:0 -1px;display:inline}
+    .daily-aya-arabic span[class^="tw-"]{display:inline}
     .daily-aya-arabic .aw.aw-active{background:rgba(255,255,255,.30);box-shadow:0 0 16px rgba(255,255,255,.28)}
     .daily-aya-arabic.tj .aw.aw-active{background:rgba(201,165,74,.30);box-shadow:0 0 12px rgba(180,140,50,.45)}
     #textModeOverlay .tm-arabic .aw{transition:background .22s,box-shadow .22s;border-radius:10px;padding:0 7px;margin:0 -1px}
@@ -2662,30 +2662,24 @@ const AR_JOIN_CHAR = /[\u0622-\u064A\u066E-\u06D3]/;
 const AR_NONJOIN_FWD = '\u0622\u0623\u0625\u0626\u0627\u0621\u062F\u0630\u0631\u0632\u0648\u0624\u0629\u0649\u06CC\u0671\u0672\u0673\u0675\u0676\u0677';
 function fixArabicJoinBoundaries(html){
   if(!html) return html;
-  const ZWJ = '\u200D';
+  /* Original-logik från din HTML: ZWJ endast vid span-gränser.
+     (ZWJ inuti varje span kan bryta formning i Amiri Quran / WebKit.) */
   const MARKS = '[\u064B-\u065F\u0670\u06D6-\u06ED\u0640]*';
-  /* 1) ZWJ inuti varje färgspan så bokstäver behåller sammanfogningsform över span-gränser */
-  html = html.replace(/<span(\s+class="tw-[^"]*"[^>]*)>([^<]*)<\/span>/g, (m, attrs, txt) => {
-    if(!txt) return m;
-    return '<span' + attrs + '>' + ZWJ + txt + ZWJ + '</span>';
-  });
-  /* 2) gräns FÖRE ett span */
   const reBefore = new RegExp('([\\u0622-\\u064A\\u066E-\\u06D3]' + MARKS + ')(<span [^>]*>)', 'g');
   html = html.replace(reBefore, (m, run, tag) => {
     const ch = run[0];
-    return (AR_JOIN_CHAR.test(ch) && !AR_NONJOIN_FWD.includes(ch)) ? run + ZWJ + tag : m;
+    return (AR_JOIN_CHAR.test(ch) && !AR_NONJOIN_FWD.includes(ch)) ? run + '\u200D' + tag : m;
   });
-  /* 3) gräns EFTER ett span */
   const reAfter = new RegExp('([\\u0622-\\u064A\\u066E-\\u06D3]' + MARKS + ')(<\\/span>)([\\u0622-\\u064A\\u066E-\\u06D3])', 'g');
   html = html.replace(reAfter, (m, run, tag, nxt) => {
     const ch = run[0];
-    return (AR_JOIN_CHAR.test(ch) && !AR_NONJOIN_FWD.includes(ch)) ? run + tag + ZWJ + nxt : m;
+    return (AR_JOIN_CHAR.test(ch) && !AR_NONJOIN_FWD.includes(ch)) ? run + tag + '\u200D' + nxt : m;
   });
   return html;
 }
 function parseTajweedHtml(markup){
   if(!markup) return '';
-  /* Tajweed-API: [rule[text]] eller [rule:id[text]] */
+  /* Samma parse som original-HTML: [rule[text]] / [rule:id[text]] */
   const html = escapeHtml(markup)
     .replace(/\[([a-z]+)(?::\d+)?\[([^\]]*)\]/g, (m, rule, txt) =>
       '<span class="tw-' + rule + '">' + txt + '</span>');
