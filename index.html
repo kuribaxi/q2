@@ -10,7 +10,6 @@
   <link href="https://cdn.jsdelivr.net/gh/kurdistan24/k24-fonts@main/K24KurdishBold-Bold.ttf" rel="preload" as="font" type="font/ttf" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Amiri+Quran&family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Lateef:wght@400;700&family=Reem+Kufi:wght@400;700&family=Katibeh&family=Markazi+Text:wght@400;700&family=Harmattan:wght@400;700&family=Vazirmatn:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;700&family=Inter:wght@400;600;700&family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Persiska typsnitt (rastikerdar) -->
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/samim-font@v4.0.5/dist/font-face.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css" rel="stylesheet">
@@ -53,13 +52,10 @@
       --tafsir-font-family: 'Times New Roman', Times, serif;
       --tafsir-text-color: #ffffff;
       --tafsir-bg-color: transparent;
-      
-      /* Färger för bakgrunder och knappar */
       --page-bg:#EFEAF9;
       --page-bg-night:#1A1733;
       --aya-bg:#EFEAF9;
       --btn-bg: var(--surface2);
-      /* Toppbar / Bismillah */
       --bismillah-color: var(--primary);
       --topbar-text: var(--text);
       --topbar-text2: var(--text2);
@@ -83,8 +79,6 @@
     
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
     html, body{width:100%;min-height:100vh}
-    
-    /* Tvingar helskärmens färg att gälla */
     html, body {
       background: var(--page-bg) !important;
       background-image: none !important;
@@ -95,16 +89,10 @@
       overflow-x:hidden;
       transition:background .3s,color .3s,padding .3s;
     }
-
     body.custom-bg{background-image:none !important}
-
-    body.chrome-hidden{
-      padding-top:12px;
-      padding-bottom:24px;
-    }
+    body.chrome-hidden{padding-top:12px;padding-bottom:24px;}
     body.chrome-hidden .bottom-lang-bar{display:none !important}
     body.chrome-hidden .top-bar{display:none !important}
-
     body.translations-hidden .translation,
     body.translations-hidden .daily-aya-text,
     body.translations-hidden .fav-text,
@@ -112,7 +100,6 @@
 
     .container{max-width:1400px;width:100%;margin:0 auto;display:flex;flex-direction:column}
 
-    /* Tvingar fönstren att följa --aya-bg */
     .top-bar,
     .daily-aya,
     .section,
@@ -151,8 +138,6 @@
 
     .top-bar-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
     .top-bar-icons{display:flex;align-items:center;gap:6px}
-    
-    /* ANVÄNDER --btn-bg FÖR KNAPPAR */
     .icon-btn{width:42px;height:42px;border-radius:13px;border:1.5px solid var(--border);background:var(--btn-bg);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:17px;transition:all .2s;position:relative}
     .icon-btn:active{background:var(--primary-soft);color:var(--primary);transform:scale(.92)}
     .icon-btn.active{background:var(--primary);color:#fff;border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-glow)}
@@ -199,7 +184,6 @@
     .modal-card .modal-close{width:100%;height:52px;border-radius:var(--rsm);border:none;background:var(--primary);color:#fff;font-family:var(--font);font-size:16px;font-weight:800;cursor:pointer;transition:all .2s}
     .modal-card .modal-close:active{opacity:.85;transform:scale(.98)}
 
-    /* TAFSIR MODAL TOPBAR (NY) */
     .tafsir-card{max-width:800px;width:100%;padding:0;display:flex;flex-direction:column;max-height:90vh;overflow:hidden}
     .tafsir-card:fullscreen,.tafsir-card:-webkit-full-screen{max-width:100vw;max-height:100vh;width:100vw;height:100vh;border-radius:0;background:var(--surface)}
     .tafsir-card:fullscreen .tafsir-scroll,.tafsir-card:-webkit-full-screen .tafsir-scroll{flex:1}
@@ -220,7 +204,6 @@
     .tafsir-size-bar button:active{transform:scale(.92)}
     .tafsir-size-bar .ts-size-display{min-width:52px;text-align:center;font-size:14px;font-weight:900;color:#fff;font-variant-numeric:tabular-nums}
     
-    /* NY TOPBAR STYLE */
     .tafsir-topbar-new{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;background:var(--surface2);border-bottom:1.5px solid var(--border);flex-shrink:0;flex-wrap:wrap}
     .tafsir-topbar-left{display:flex;align-items:center;gap:10px;flex:1;min-width:150px}
     .tafsir-topbar-left i{font-size:20px;color:var(--primary)}
@@ -237,13 +220,11 @@
     .tafsir-icon-btn:active{transform:scale(.92)}
     .tafsir-icon-btn.close-btn:hover{background:var(--rose-soft);color:var(--rose);border-color:var(--rose)}
 
-    /* Hastighetsknapp */
     .speed-btn{padding:0 12px;height:36px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface);color:var(--text2);cursor:pointer;display:flex;align-items:center;gap:6px;font-family:var(--font);font-size:13px;font-weight:800;transition:all .2s}
     .speed-btn:hover{background:var(--primary-soft);color:var(--primary);border-color:var(--primary)}
     .speed-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
     .speed-btn .speed-val{min-width:36px;text-align:center}
 
-    /* FIX 2: Zoom-knappar i tafsir */
     .tafsir-zoom-controls{display:flex;align-items:center;gap:4px;margin-right:8px}
 
     .tafsir-translate-bar{display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding:12px 24px;background:var(--surface2);border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border);flex-shrink:0}
@@ -427,7 +408,7 @@
     .daily-aya-arabic .tw-g,.daily-aya-arabic .tw-f,.daily-aya-arabic .tw-a,.daily-aya-arabic .tw-i{color:#128a4c}
     .daily-aya-arabic .tw-u{color:#7b2ea8}
     .daily-aya-arabic .tw-w{color:#00756a}
-    .daily-aya-arabic .tw-d{color:#c62828} /* ikhfa / related */
+    .daily-aya-arabic .tw-d{color:#c62828}
     .daily-aya-text{font-size:36px;line-height:1.8;border-top:1.5px solid rgba(255,255,255,.3);padding-top:16px;position:relative;z-index:1;font-style:italic;text-shadow:0 1px 2px rgba(0,0,0,.1);color:var(--text)}
     .daily-aya-text.ku,.daily-aya-text.ku-KM{font-family:var(--kurdish-font);font-style:normal;font-size:38px;line-height:1.9}
     .daily-aya-text.fa{font-family:var(--persian-font);font-style:normal;font-size:38px;line-height:1.9}
@@ -536,7 +517,6 @@
     .restore-chrome-btn:active{transform:scale(.92)}
     .restore-chrome-btn.show{display:flex}
 
-    /* ===== NY: TEXT-LÄGE (hel skärm, bara versens text) ===== */
     #textModeOverlay{position:fixed;inset:0;z-index:9990;background:#000;display:none;flex-direction:column;align-items:center;justify-content:center;padding:60px 30px calc(var(--tm-bar-h, 80px) + 24px + env(safe-area-inset-bottom));overflow-y:auto;text-align:center}
     #textModeOverlay.active{display:flex}
     #textModeOverlay .tm-ref{font-size:14px;font-weight:800;letter-spacing:.1em;opacity:.65;margin-bottom:20px;text-transform:uppercase;color:#fff}
@@ -546,7 +526,6 @@
     #textModeOverlay .tm-text.fa{font-family:var(--persian-font);font-style:normal;direction:rtl}
     #textModeOverlay .tm-text.phonetic{font-family:'Times New Roman',Times,serif;font-style:italic;direction:ltr}
     #textModeOverlay .tm-arabic .word-god{color:#e5484d !important;font-weight:700}
-    /* Tazhib-paneldesign i helskärm — samma som vanlig vy (pergament + guld) */
     #textModeOverlay .tm-arabic.tj{background:radial-gradient(ellipse at 50% 28%, #fffdf4 0%, #f9f0da 68%, #f3e7c6 100%);border:1.5px solid #c9a54a;border-radius:18px;padding:34px 44px 30px;box-shadow:inset 0 0 0 5px rgba(201,165,74,.20), inset 0 0 0 6.5px rgba(201,165,74,.55), inset 0 2px 24px rgba(150,110,30,.18), 0 10px 34px rgba(0,0,0,.45);color:#2b2410 !important;text-shadow:none;max-width:1060px;position:relative}
     #textModeOverlay .tm-arabic.tj .aw{color:#2b2410}
     #textModeOverlay .tm-arabic.tj .tw-h,#textModeOverlay .tm-arabic.tj .tw-l,#textModeOverlay .tm-arabic.tj .tw-s{color:#8d8468 !important}
@@ -567,7 +546,6 @@
     #textModeOverlay .tm-close:hover{background:rgba(255,255,255,.28)}
     #textModeOverlay .tm-close:active{transform:scale(.92)}
     #tmColorInput{position:fixed;left:-100px;top:-100px;width:0;height:0;opacity:0;pointer-events:none}
-    /* FIX: mobilanpassat verktygsfält i text-läge — radbryter istället för att hamna utanför skärmen */
     #textModeOverlay .tm-size-bar{position:fixed;bottom:max(16px, env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:9992;display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:50px;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.3);backdrop-filter:blur(8px);flex-wrap:wrap;justify-content:center;max-width:calc(100vw - 20px);box-sizing:border-box;transition:opacity .45s ease, transform .45s ease}
     #textModeOverlay .tm-size-bar.tm-idle{opacity:0;pointer-events:none;transform:translateX(-50%) translateY(14px)}
     #textModeOverlay .tm-close{transition:opacity .45s ease, transform .45s ease}
@@ -727,7 +705,6 @@
       #textModeOverlay .tm-text{font-size:calc(21px * var(--tm-scale, 1));line-height:1.7}
     }
 
-    /* ===== NY TOPBAR & SPEED & ZOOM ===== */
     .tafsir-topbar-new{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;background:var(--surface2);border-bottom:1.5px solid var(--border);flex-shrink:0;flex-wrap:wrap}
     .speed-btn-container{display:flex;align-items:center;gap:4px}
     .speed-btn{padding:0 10px;height:34px;border-radius:8px;border:1.5px solid var(--border);background:var(--surface);color:var(--text2);cursor:pointer;display:flex;align-items:center;gap:4px;font-family:var(--font);font-size:12px;font-weight:800;transition:all .2s}
@@ -744,7 +721,6 @@
       .tafsir-ayah-input { width: 60px; }
     }
 
-    /* ---- Panel för färgval ---- */
     .pagebg-note{font-size:13px;color:var(--text2);line-height:1.55;margin-bottom:16px}
     .pagebg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:10px;margin-bottom:18px}
     .pagebg-swatch{height:56px;border-radius:13px;border:2px solid var(--border);cursor:pointer;transition:transform .15s,border-color .15s,box-shadow .15s;padding:0;background-clip:padding-box}
@@ -774,7 +750,6 @@
 
 <input type="color" id="tmColorInput" value="#000000" oninput="setTextModeBg(this.value)">
 
-<!-- NY: TEXT-LÄGE-OVERLAY (hel skärm) -->
 <div id="textModeOverlay">
   <button class="tm-close" onclick="toggleTextMode()" title="Stäng text-läge"><i class="fas fa-times"></i></button>
   <div class="tm-size-bar">
@@ -833,7 +808,6 @@
         <button class="icon-btn" onclick="toggleFullscreen()" title="Helskärm" id="fsBtn">
           <i class="fas fa-expand" id="fsIcon"></i>
         </button>
-        <!-- HÄR ÄR KNAPPEN DU VILLE HA -->
         <button class="icon-btn" onclick="openColorModal()" title="Byt färg på paneler och knappar" id="colorSettingsBtn">
           <i class="fas fa-palette" id="colorSettingsIcon"></i>
         </button>
@@ -1001,3 +975,320 @@
     </div>
     <div class="translation" data-tr="falaq"></div>
   </div>
+
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   HJÄLPFUNKTIONER
+   ============================================================ */
+const $ = (id) => document.getElementById(id);
+
+let dailyAyaData = null;
+
+/* ============================================================
+   1. SURA-LISTA
+   ============================================================ */
+const SURA_NAMES = [
+  "Al-Fatiha","Al-Baqara","Aal-Imran","An-Nisa","Al-Ma'ida","Al-An'am","Al-A'raf","Al-Anfal","At-Tawba","Yunus",
+  "Hud","Yusuf","Ar-Ra'd","Ibrahim","Al-Hijr","An-Nahl","Al-Isra","Al-Kahf","Maryam","Ta-Ha",
+  "Al-Anbiya","Al-Hajj","Al-Mu'minun","An-Nur","Al-Furqan","Ash-Shu'ara","An-Naml","Al-Qasas","Al-Ankabut","Ar-Rum",
+  "Luqman","As-Sajda","Al-Ahzab","Saba","Fatir","Ya-Sin","As-Saffat","Sad","Az-Zumar","Ghafir",
+  "Fussilat","Ash-Shura","Az-Zukhruf","Ad-Dukhan","Al-Jathiya","Al-Ahqaf","Muhammad","Al-Fath","Al-Hujurat","Qaf",
+  "Adh-Dhariyat","At-Tur","An-Najm","Al-Qamar","Ar-Rahman","Al-Waqi'a","Al-Hadid","Al-Mujadila","Al-Hashr","Al-Mumtahina",
+  "As-Saff","Al-Jumu'a","Al-Munafiqun","At-Taghabun","At-Talaq","At-Tahrim","Al-Mulk","Al-Qalam","Al-Haqqa","Al-Ma'arij",
+  "Nuh","Al-Jinn","Al-Muzzammil","Al-Muddaththir","Al-Qiyama","Al-Insan","Al-Mursalat","An-Naba","An-Nazi'at","Abasa",
+  "At-Takwir","Al-Infitar","Al-Mutaffifin","Al-Inshiqaq","Al-Buruj","At-Tariq","Al-A'la","Al-Ghashiya","Al-Fajr","Al-Balad",
+  "Ash-Shams","Al-Layl","Ad-Duha","Ash-Sharh","At-Tin","Al-Alaq","Al-Qadr","Al-Bayyina","Az-Zalzala","Al-Adiyat",
+  "Al-Qari'a","At-Takathur","Al-Asr","Al-Humaza","Al-Fil","Quraysh","Al-Ma'un","Al-Kawthar","Al-Kafirun","An-Nasr",
+  "Al-Masad","Al-Ikhlas","Al-Falaq","An-Nas"
+];
+
+function populateSuraSelects() {
+  const suraSelect = $('suraSelect');
+  const playSuraSelect = $('playSuraSelect');
+  if (!suraSelect || !playSuraSelect) return;
+  suraSelect.innerHTML = '';
+  playSuraSelect.innerHTML = '';
+  SURA_NAMES.forEach((name, i) => {
+    const num = i + 1;
+    const opt1 = document.createElement('option');
+    opt1.value = num;
+    opt1.textContent = `${num}. ${name}`;
+    suraSelect.appendChild(opt1);
+    const opt2 = document.createElement('option');
+    opt2.value = num;
+    opt2.textContent = `${num}. ${name}`;
+    playSuraSelect.appendChild(opt2);
+  });
+}
+populateSuraSelects();
+
+/* ============================================================
+   2. KLOCKA & DATUM
+   ============================================================ */
+function updateClock() {
+  const now = new Date();
+  const timeEl = $('clockTime');
+  const dateEl = $('clockDate');
+  if (timeEl) timeEl.textContent = now.toLocaleTimeString('sv-SE', { hour12: false });
+  if (dateEl) {
+    const dateStr = now.toLocaleDateString('sv-SE', {
+      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    });
+    dateEl.innerHTML = `<span class="date-label">Datum</span>${dateStr}`;
+  }
+}
+updateClock();
+setInterval(updateClock, 1000);
+
+/* ============================================================
+   3. DAGENS AYA
+   ============================================================ */
+async function loadDailyAya() {
+  const container = $('dailyAyaContent');
+  if (!container) return;
+  container.innerHTML = '<div class="daily-aya-loading">Laddar…</div>';
+
+  try {
+    const sura = Math.floor(Math.random() * 114) + 1;
+    const res = await fetch(`https://api.alquran.cloud/v1/surah/${sura}/ar.alafasy`);
+    if (!res.ok) throw new Error('API-fel');
+    const json = await res.json();
+    const ayas = json.data.ayahs;
+    const ayaNum = Math.floor(Math.random() * ayas.length);
+    const aya = ayas[ayaNum];
+
+    dailyAyaData = {
+      sura: sura,
+      aya: aya.numberInSurah,
+      arabic: aya.text,
+      suraName: json.data.name,
+      suraNameEn: json.data.englishName
+    };
+
+    let translation = '';
+    try {
+      const trRes = await fetch(`https://api.alquran.cloud/v1/ayah/${sura}:${aya.numberInSurah}/sv.skolverket`);
+      if (trRes.ok) {
+        const trJson = await trRes.json();
+        translation = trJson.data.text;
+      } else {
+        const trRes2 = await fetch(`https://api.alquran.cloud/v1/ayah/${sura}:${aya.numberInSurah}/en.asad`);
+        const trJson2 = await trRes2.json();
+        translation = trJson2.data.text;
+      }
+    } catch (e) {
+      translation = '(Översättning ej tillgänglig)';
+    }
+    dailyAyaData.translation = translation;
+
+    container.innerHTML = `
+      <div class="daily-aya-ref">${dailyAyaData.suraNameEn} · ${sura}:${aya.numberInSurah}</div>
+      <div class="daily-aya-arabic">${aya.text}</div>
+      <div class="daily-aya-text">${translation}</div>
+    `;
+    $('saveFavBtn')?.classList.remove('saved');
+  } catch (err) {
+    console.error(err);
+    container.innerHTML = '<div class="daily-aya-loading">Kunde inte ladda dagens aya. Kontrollera internetanslutningen.</div>';
+  }
+}
+loadDailyAya();
+
+/* ============================================================
+   4. VÄDER
+   ============================================================ */
+async function loadWeather() {
+  const tempEl = $('weatherTemp');
+  const descEl = $('weatherDesc');
+  const iconEl = $('weatherIcon');
+  if (!tempEl) return;
+
+  if (!navigator.geolocation) {
+    tempEl.textContent = '--°C';
+    descEl.textContent = 'Position ej tillgänglig';
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(async (pos) => {
+    const { latitude, longitude } = pos.coords;
+    try {
+      const res = await fetch(
+        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&timezone=auto`
+      );
+      const json = await res.json();
+      const w = json.current_weather;
+      if (!w) throw new Error('Ingen väderdata');
+      const codeMap = {
+        0: ['Klart', 'fa-sun'],
+        1: ['Mestadels klart', 'fa-cloud-sun'],
+        2: ['Delvis molnigt', 'fa-cloud-sun'],
+        3: ['Mulet', 'fa-cloud'],
+        45: ['Dimma', 'fa-smog'],
+        48: ['Dimma', 'fa-smog'],
+        51: ['Lätt duggregn', 'fa-cloud-rain'],
+        53: ['Duggregn', 'fa-cloud-rain'],
+        55: ['Tätt duggregn', 'fa-cloud-rain'],
+        61: ['Lätt regn', 'fa-cloud-rain'],
+        63: ['Regn', 'fa-cloud-rain'],
+        65: ['Kraftigt regn', 'fa-cloud-showers-heavy'],
+        71: ['Lätt snö', 'fa-snowflake'],
+        73: ['Snö', 'fa-snowflake'],
+        75: ['Kraftig snö', 'fa-snowflake'],
+        80: ['Regnskurar', 'fa-cloud-sun-rain'],
+        81: ['Regnskurar', 'fa-cloud-sun-rain'],
+        82: ['Kraftiga skurar', 'fa-cloud-showers-heavy'],
+        95: ['Åska', 'fa-bolt'],
+        96: ['Åska med hagel', 'fa-bolt'],
+        99: ['Åska med hagel', 'fa-bolt']
+      };
+      const [desc, icon] = codeMap[w.weathercode] || ['Okänt', 'fa-cloud'];
+      tempEl.textContent = `${Math.round(w.temperature)}°C`;
+      descEl.textContent = desc;
+      if (iconEl) iconEl.className = `fas ${icon}`;
+    } catch (e) {
+      console.error(e);
+      tempEl.textContent = '--°C';
+      descEl.textContent = 'Väder ej tillgängligt';
+    }
+  }, () => {
+    tempEl.textContent = '--°C';
+    descEl.textContent = 'Position nekad';
+  });
+}
+loadWeather();
+
+/* ============================================================
+   5. AZAN-TIDER
+   ============================================================ */
+async function loadAzanTimes() {
+  const nextTimeEl = $('azanNextTime');
+  const nextLabelEl = $('azanNextLabel');
+  if (!nextTimeEl) return;
+
+  if (!navigator.geolocation) {
+    nextTimeEl.textContent = '--:--';
+    nextLabelEl.textContent = 'Position ej tillgänglig';
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(async (pos) => {
+    const { latitude, longitude } = pos.coords;
+    const today = new Date();
+    const dateStr = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
+    try {
+      const res = await fetch(
+        `https://api.aladhan.com/v1/timings/${dateStr}?latitude=${latitude}&longitude=${longitude}&method=2`
+      );
+      const json = await res.json();
+      const timings = json.data.timings;
+      const prayers = [
+        { name: 'Fajr', time: timings.Fajr },
+        { name: 'Dhuhr', time: timings.Dhuhr },
+        { name: 'Asr', time: timings.Asr },
+        { name: 'Maghrib', time: timings.Maghrib },
+        { name: 'Isha', time: timings.Isha }
+      ];
+      const now = new Date();
+      let next = null;
+      for (const p of prayers) {
+        const [h, m] = p.time.split(':').map(Number);
+        const pt = new Date();
+        pt.setHours(h, m, 0, 0);
+        if (pt > now) { next = p; break; }
+      }
+      if (!next) next = prayers[0];
+      nextTimeEl.textContent = next.time;
+      nextLabelEl.textContent = `Nästa: ${next.name}`;
+    } catch (e) {
+      console.error(e);
+      nextTimeEl.textContent = '--:--';
+      nextLabelEl.textContent = 'Azan ej tillgänglig';
+    }
+  }, () => {
+    nextTimeEl.textContent = '--:--';
+    nextLabelEl.textContent = 'Position nekad';
+  });
+}
+loadAzanTimes();
+
+/* ============================================================
+   6. PLACEHOLDER-FUNKTIONER
+   ============================================================ */
+function toggleChrome() { document.body.classList.toggle('chrome-hidden'); }
+function toggleTranslations() { document.body.classList.toggle('translations-hidden'); }
+function toggleFullscreen() {
+  if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+  else document.exitFullscreen?.();
+}
+function toggleNight() { document.body.classList.toggle('night'); }
+function toggleTextMode() {
+  const ov = $('textModeOverlay');
+  if (!ov) return;
+  ov.classList.toggle('active');
+  if (ov.classList.contains('active') && dailyAyaData) {
+    $('tmRef').textContent = `${dailyAyaData.suraNameEn} · ${dailyAyaData.sura}:${dailyAyaData.aya}`;
+    $('tmArabic').textContent = dailyAyaData.arabic;
+    $('tmText').textContent = dailyAyaData.translation || '';
+  }
+}
+function openColorModal() { alert('Färgmodal – implementera vid behov'); }
+function openFavorites() { alert('Favoriter – implementera vid behov'); }
+function openWeatherModal() { alert('Vädermodal – implementera vid behov'); }
+function openAzanModal() { alert('Azan-modal – implementera vid behov'); }
+function toggleSearchPanel() { $('searchPanel')?.classList.toggle('open'); }
+function toggleWakeLockManual() {}
+function toggleWordSync() {}
+function adjustWordSyncOffset(v) {}
+function toggleVerseStyle() {}
+function changeTextModeSize(d) {}
+function resetTextModeSize() {}
+function setTextModeBg(c) { const ov = $('textModeOverlay'); if (ov) ov.style.background = c; }
+function playDailyAya() { alert('Spela dagens aya – implementera ljudspelare'); }
+function toggleDailyLoop() {}
+function openTafsirDaily() { alert('Tafsir – implementera'); }
+function goToPrevAya() {}
+function goToNextAya() {}
+function nextDailyAya() { loadDailyAya(); }
+function saveCurrentAyaAsFavorite() {}
+function toggleSuraFavorite() {}
+function playSelectedSura() {}
+function stopSuraPlayback() {}
+function suraPlayerBack() {}
+function suraPlayerForward() {}
+function cycleSuraLoopMode() {}
+function playAyah() {}
+function playSurah() {}
+function copyVerse() {}
+function toggleVerseLoop() {}
+function openTafsirAyah() {}
+function openTafsirChapter() {}
+function toggleSectionFavorite() {}
+function goToSuraAyah() {
+  const s = $('suraSelect')?.value;
+  const a = $('ayahInput')?.value;
+  if (s) alert(`Gå till sura ${s}, vers ${a || 1}`);
+}
+function eyeBtnClick() { toggleChrome(); }
+function cycleClockDate() {}
+function tmPrevTrack() {}
+function tmNextTrack() {}
+function tmTogglePlayPause() {}
+function performQuranSearch() {}
+function clearQuranSearch() {}
+function openTextModeColorPicker(e) { $('tmColorInput').click(); }
+
+const qariSelect = $('qariSelect');
+if (qariSelect) {
+  ['Mishary Alafasy','Abdul Basit','Saad Al-Ghamdi'].forEach((name, i) => {
+    const o = document.createElement('option');
+    o.value = i;
+    o.textContent = name;
+    qariSelect.appendChild(o);
+  });
+}
+</script>
+</body>
+</html>
